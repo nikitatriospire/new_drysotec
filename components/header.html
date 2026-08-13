@@ -14,7 +14,7 @@
   <body>
         <a class="skip_link" href="#content">Skip to content</a>
         <!-- Header -->
-   <header class="relative mx-7 z-100" x-data="{
+   <header class="mx-7 z-100 sticky top-10" x-data="{
     open: false,
     active: 0,
     hasSub: true,
@@ -34,7 +34,7 @@
   ========================================================== -->
     <div
       class="fixed inset-x-0 top-0 z-50 bg-blue text-white py-10 px-40 xl:px-64 text-sm xl:text-16 transition-opacity duration-300"
-      :class="scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'">
+      :class="scrolled ? 'hidden pointer-events-none' : 'block'">
       <div class="flex min-h-10 items-center justify-center md:justify-between font-medium">
 
         <!-- Left -->
@@ -60,6 +60,7 @@
             <a href="#" aria-label="LinkedIn"
               class="inline-flex size-16 items-center justify-center rounded-sm text-[#0872B9] shrink-0">
               <img src="./assets/images/linkedin-icon-white.svg" alt="linkedin icon" class="size-16">
+              
             </a>
           </div>
         </div>
@@ -238,7 +239,7 @@
       x-transition:leave-end="opacity-0 -translate-y-full"
       class="flex flex-col fixed inset-0 bg-blue w-full h-full z-999 overflow-y-auto">
       <!-- Header: Logo & Controls -->
-      <div class="flex items-center justify-between p-24 md:p-sec-lg">
+      <div class="flex items-center justify-between p-24 md:px-48 py-32">
         <a href="/" class="shrink-0">
           <img src="./assets/images/dry-white-logo.svg" alt="DrySoTec" class="h-47 w-104">
         </a>
@@ -272,12 +273,12 @@
       </div>
 
       <!-- Mobile Navigation Content -->
-      <nav class="in-menu p-24 md:p-sec-lg">
+      <nav class="in-menu p-24 md:px-48 md:py-24">
         <ul class="">
 
           <!-- 1. Link: Über uns -->
           <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Über uns</span>
               <span aria-label="Über uns Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -288,7 +289,7 @@
 
           <!-- 2. Link: Liefer- und Leistungsspektrum -->
           <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Liefer- und Leistungsspektrum</span>
               <span aria-label="Liefer- und Leistungsspektrum Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -305,7 +306,7 @@
               <li class="pb-12 flex flex-col">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'sncr' ? null : 'sncr')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-8  text-sm font-semibold">
                     <span>SNCR (DeNOx)</span>
                     <i data-lucide="arrow-right" class="size-18"></i>
                   </span>
@@ -321,7 +322,7 @@
               <li x-show="mobileActiveTab === 'sncr'" x-cloak x-collapse class="w-full border-t-0! pb-4">
                 <ul class="nest-submenu *:pl-12 text-xs font-normal w-full">
                   <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Das SNCR-Verfahren</span>
                       <span aria-label="Das SNCR-Verfahren Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -330,7 +331,7 @@
                     </a>
                   </li>
                   <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>SNCR-Anlagen</span>
                       <span aria-label="SNCR-Anlagen Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -339,7 +340,7 @@
                     </a>
                   </li>
                   <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Einzellanzenumschaltung</span>
                       <span aria-label="Einzellanzenumschaltung Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -348,7 +349,7 @@
                     </a>
                   </li>
                   <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>TWIN-NOx</span>
                       <span aria-label="TWIN-NOx Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -357,7 +358,7 @@
                     </a>
                   </li>
                   <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Selektive Rauchgaskühlung</span>
                       <span aria-label="Selektive Rauchgaskühlung Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -372,7 +373,7 @@
               <li class="pb-12 flex flex-col">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'mobile' ? null : 'mobile')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-8  text-sm font-semibold">
                     <span>Mobile SNCR Temperaturmessungen</span>
                     <i data-lucide="arrow-right" class="size-18"></i>
                   </span>
@@ -388,7 +389,7 @@
               <li x-show="mobileActiveTab === 'mobile'" x-cloak x-collapse class="w-full pb-4">
                 <ul class="nest-submenu *:pl-12 text-xs font-normal w-full">
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Temperaturmessungen</span>
                       <span aria-label="Temperaturmessungen Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -397,7 +398,7 @@
                     </a>
                   </li>
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Mobile SNCR Tests</span>
                       <span aria-label="Mobile SNCR Tests Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -412,7 +413,7 @@
               <li class="pb-12 flex flex-col">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'tanklager' ? null : 'tanklager')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-8  text-sm font-semibold">
                     <span>Tanklager</span>
                     <i data-lucide="arrow-right" class="size-18"></i>
                   </span>
@@ -428,7 +429,7 @@
               <li x-show="mobileActiveTab === 'tanklager'" x-cloak x-collapse class="w-full pb-4">
                 <ul class="nest-submenu w-full pl-12 text-xs font-normal">
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Tanklager Systeme</span>
                       <span aria-label="Tanklager Systeme Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -443,7 +444,7 @@
               <li class="pb-12 flex flex-col">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'reduktion' ? null : 'reduktion')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-2  text-sm font-semibold">
                     <span>Reduktionsmittel</span>
                     <i data-lucide="arrow-right" class="size-18"></i>
                   </span>
@@ -459,7 +460,7 @@
               <li x-show="mobileActiveTab === 'reduktion'" x-cloak x-collapse class="w-full pb-4">
                 <ul class="nest-submenu w-full pl-12 text-xs font-normal">
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Harnstoff Ammoniak</span>
                       <span aria-label="Harnstoff Ammoniak Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -474,7 +475,7 @@
               <li class="pb-12 flex flex-col">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'service' ? null : 'service')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-2  text-sm font-semibold">
                     <span>Service Instandhaltung</span>
                     <i data-lucide="arrow-right" class="size-18"></i>
                   </span>
@@ -490,7 +491,7 @@
               <li x-show="mobileActiveTab === 'service'" x-cloak x-collapse class="w-full pb-4">
                 <ul class="nest-submenu w-full pl-12 text-xs font-normal">
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Wartung Support</span>
                       <span aria-label="Wartung Support Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -506,7 +507,7 @@
 
           <!-- 3. Link: Referenzen -->
           <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Referenzen</span>
               <span aria-label="Referenzen Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -517,7 +518,7 @@
 
           <!-- 4. Link: Downloads -->
           <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Downloads</span>
               <span aria-label="Downloads Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -528,7 +529,7 @@
 
           <!-- 5. Link: Karriere -->
           <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Karriere</span>
               <span aria-label="Karriere Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -539,7 +540,7 @@
 
           <!-- 6. Link: Kontakt -->
           <li class="flex items-center justify-between py-4">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Kontakt</span>
               <span aria-label="Kontakt Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">

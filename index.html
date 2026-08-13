@@ -14,21 +14,19 @@
 
 <body>
   <a class="skip_link" href="#content">Skip to content</a>
-  <!-- header new -->
   <!-- Header -->
-
-  <header class="relative mx-7 z-100" x-data="{
+  <header class="mx-7 z-100 sticky top-10"  x-data="{
     open: false,
     active: 0,
     hasSub: true,
     mobileMenuOpen: false,
     mobileActiveTab: null,
     scrolled: false,
-    rowCls(i) {
-      return this.active === i
-        ? 'bg-[#E9F1FD] text-[#0B50A0] scale-100 font-semibold'
-        : 'text-gray-700 hover:bg-gray-100 hover:text-[#0B50A0] hover:scale-[0.97]';
-    }
+   rowCls(i) {
+  return this.active === i
+    ? 'bg-[#cce0f0] text-black scale-100 font-semibold'
+    : 'text-blue hover:bg-[#cce0f0] hover:text-black hover:scale-[0.97]';
+}
   }" @scroll.window="scrolled = (window.scrollY > 20)" @mouseleave="open = false"
     @keydown.escape.window="mobileMenuOpen = false">
 
@@ -37,7 +35,7 @@
   ========================================================== -->
     <div
       class="fixed inset-x-0 top-0 z-50 bg-blue text-white py-10 px-40 xl:px-64 text-sm xl:text-16 transition-opacity duration-300"
-      :class="scrolled ? 'opacity-0 pointer-events-none' : 'opacity-100'">
+      :class="scrolled ? 'hidden pointer-events-none' : 'block'">
       <div class="flex min-h-10 items-center justify-center md:justify-between font-medium">
 
         <!-- Left -->
@@ -59,10 +57,16 @@
         <!-- Right -->
         <div class="hidden lg:flex items-center gap-4">
           <span>Besuchen Sie uns:</span>
-          <div class="flex gap-8 items-center">
+          <div class="flex gap-6 items-center">
+            <a href="#" aria-label="LinkedIn"
+              class="inline-flex size-16 items-center justify-center  text-[#0872B9] shrink-0 ">
+              <img src="./assets/images/linkedin-icon-white.svg" alt="linkedin icon" class="size-16 ">
+           
+            </a>
             <a href="#" aria-label="LinkedIn"
               class="inline-flex size-16 items-center justify-center rounded-sm text-[#0872B9] shrink-0">
-              <img src="./assets/images/linkedin-icon-white.svg" alt="linkedin icon" class="size-16">
+              
+              <img src="./assets/images/twitter-white.png" alt="linkedin icon" class="size-16 ">
             </a>
           </div>
         </div>
@@ -232,16 +236,16 @@
     </div>
 
     <!-- ── MOBILE MENU OVERLAY ───────────────────────────────────── -->
-    <div x-show="mobileMenuOpen" x-cloak 
+   <div x-show="mobileMenuOpen" x-cloak 
       x-transition:enter="transition ease-out duration-300"
       x-transition:enter-start="opacity-0 -translate-y-full" 
       x-transition:enter-end="opacity-100 translate-y-0"
       x-transition:leave="transition ease-in duration-200" 
       x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 -translate-y-full"
-      class="flex flex-col fixed inset-0 bg-blue w-full h-full z-999 overflow-y-auto">
+      class="flex flex-col fixed inset-0 bg-blue w-full h-full z-999 overflow-y-auto" :class="{ 'open': mobileMenuOpen }">
       <!-- Header: Logo & Controls -->
-      <div class="flex items-center justify-between p-24 md:p-sec-lg">
+      <div class="flex items-center justify-between p-24 md:px-48 py-32">
         <a href="/" class="shrink-0">
           <img src="./assets/images/dry-white-logo.svg" alt="DrySoTec" class="h-47 w-104">
         </a>
@@ -275,12 +279,12 @@
       </div>
 
       <!-- Mobile Navigation Content -->
-      <nav class="in-menu p-24 md:p-sec-lg">
+      <nav class="in-menu p-24 md:px-48 md:py-24">
         <ul class="">
 
           <!-- 1. Link: Über uns -->
-          <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+          <li class="menu-block flex items-center justify-between animated_line">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Über uns</span>
               <span aria-label="Über uns Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -290,8 +294,8 @@
           </li>
 
           <!-- 2. Link: Liefer- und Leistungsspektrum -->
-          <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+          <li class="menu-block flex items-center justify-between animated_line">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Liefer- und Leistungsspektrum</span>
               <span aria-label="Liefer- und Leistungsspektrum Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -305,17 +309,17 @@
             <ul class="submenu-container w-full">
 
               <!-- 2.1 Trigger Item: SNCR (DeNOx) -->
-              <li class="pb-12 flex flex-col">
+              <li class="pb-12 flex flex-col animated_line">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'sncr' ? null : 'sncr')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-8 text-sm font-semibold">
                     <span>SNCR (DeNOx)</span>
-                    <i data-lucide="arrow-right" class="size-18"></i>
+                    <i data-lucide="arrow-right" class="size-18 transition-transform duration-200"
+                      :class="mobileActiveTab === 'sncr' ? 'rotate-90' : ''"></i>
                   </span>
                   <span aria-label="SNCR Details"
                     class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
-                    <i data-lucide="chevron-right" class="size-18 inline-block transition-transform duration-200"
-                      :class="mobileActiveTab === 'sncr' ? 'rotate-90' : ''"></i>
+                    <i data-lucide="chevron-right" class="size-18 inline-block"></i>
                   </span>
                 </button>
               </li>
@@ -323,8 +327,8 @@
               <!-- LEVEL 3: SNCR UL -->
               <li x-show="mobileActiveTab === 'sncr'" x-cloak x-collapse class="w-full border-t-0! pb-4">
                 <ul class="nest-submenu *:pl-12 text-xs font-normal w-full">
-                  <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                  <li class="flex items-center justify-between w-full pb-12 animated_line">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Das SNCR-Verfahren</span>
                       <span aria-label="Das SNCR-Verfahren Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -332,8 +336,8 @@
                       </span>
                     </a>
                   </li>
-                  <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                  <li class="flex items-center justify-between w-full pb-12 animated_line">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>SNCR-Anlagen</span>
                       <span aria-label="SNCR-Anlagen Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -341,8 +345,8 @@
                       </span>
                     </a>
                   </li>
-                  <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                  <li class="flex items-center justify-between w-full pb-12 animated_line">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Einzellanzenumschaltung</span>
                       <span aria-label="Einzellanzenumschaltung Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -350,8 +354,8 @@
                       </span>
                     </a>
                   </li>
-                  <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                  <li class="flex items-center justify-between w-full pb-12 animated_line">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>TWIN-NOx</span>
                       <span aria-label="TWIN-NOx Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -359,8 +363,8 @@
                       </span>
                     </a>
                   </li>
-                  <li class="flex items-center justify-between w-full pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                  <li class="flex items-center justify-between w-full pb-12 animated_line">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Selektive Rauchgaskühlung</span>
                       <span aria-label="Selektive Rauchgaskühlung Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -372,17 +376,17 @@
               </li>
 
               <!-- 2.2 Trigger Item: Mobile SNCR & Temperaturmessungen -->
-              <li class="pb-12 flex flex-col">
+              <li class="pb-12 flex flex-col animated_line">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'mobile' ? null : 'mobile')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-8 text-sm font-semibold">
                     <span>Mobile SNCR Temperaturmessungen</span>
-                    <i data-lucide="arrow-right" class="size-18"></i>
+                    <i data-lucide="arrow-right" class="size-18 transition-transform duration-200"
+                      :class="mobileActiveTab === 'mobile' ? 'rotate-90' : ''"></i>
                   </span>
                   <span
                     class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
-                    <i data-lucide="chevron-right" class="size-18 inline-block transition-transform duration-200"
-                      :class="mobileActiveTab === 'mobile' ? 'rotate-90' : ''"></i>
+                    <i data-lucide="chevron-right" class="size-18 inline-block"></i>
                   </span>
                 </button>
               </li>
@@ -390,8 +394,8 @@
               <!-- LEVEL 3: Mobile SNCR UL -->
               <li x-show="mobileActiveTab === 'mobile'" x-cloak x-collapse class="w-full pb-4">
                 <ul class="nest-submenu *:pl-12 text-xs font-normal w-full">
-                  <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                  <li class="flex items-center justify-between pb-12 animated_line">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Temperaturmessungen</span>
                       <span aria-label="Temperaturmessungen Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -399,8 +403,8 @@
                       </span>
                     </a>
                   </li>
-                  <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                  <li class="flex items-center justify-between pb-12 animated_line">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Mobile SNCR Tests</span>
                       <span aria-label="Mobile SNCR Tests Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -412,26 +416,26 @@
               </li>
 
               <!-- 2.3 Trigger Item: Tanklager -->
-              <li class="pb-12 flex flex-col">
+              <li class="pb-12 flex flex-col animated_line">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'tanklager' ? null : 'tanklager')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-8 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-8 text-sm font-semibold">
                     <span>Tanklager</span>
-                    <i data-lucide="arrow-right" class="size-18"></i>
+                    <i data-lucide="arrow-right" class="size-18 transition-transform duration-200"
+                      :class="mobileActiveTab === 'tanklager' ? 'rotate-90' : ''"></i>
                   </span>
                   <span
                     class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
-                    <i data-lucide="chevron-right" class="size-18 inline-block transition-transform duration-200"
-                      :class="mobileActiveTab === 'tanklager' ? 'rotate-90' : ''"></i>
+                    <i data-lucide="chevron-right" class="size-18 inline-block"></i>
                   </span>
                 </button>
               </li>
 
               <!-- LEVEL 3: Tanklager UL -->
-              <li x-show="mobileActiveTab === 'tanklager'" x-cloak x-collapse class="w-full pb-4">
+              <li x-show="mobileActiveTab === 'tanklager'" x-cloak x-collapse class="w-full pb-4 animated_line">
                 <ul class="nest-submenu w-full pl-12 text-xs font-normal">
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Tanklager Systeme</span>
                       <span aria-label="Tanklager Systeme Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -443,26 +447,26 @@
               </li>
 
               <!-- 2.4 Trigger Item: Reduktionsmittel -->
-              <li class="pb-12 flex flex-col">
+              <li class="pb-12 flex flex-col animated_line">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'reduktion' ? null : 'reduktion')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold">
                     <span>Reduktionsmittel</span>
-                    <i data-lucide="arrow-right" class="size-18"></i>
+                    <i data-lucide="arrow-right" class="size-18 transition-transform duration-200"
+                      :class="mobileActiveTab === 'reduktion' ? 'rotate-90' : ''"></i>
                   </span>
                   <span
                     class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
-                    <i data-lucide="chevron-right" class="size-18 inline-block transition-transform duration-200"
-                      :class="mobileActiveTab === 'reduktion' ? 'rotate-90' : ''"></i>
+                    <i data-lucide="chevron-right" class="size-18 inline-block"></i>
                   </span>
                 </button>
               </li>
 
               <!-- LEVEL 3: Reduktionsmittel UL -->
-              <li x-show="mobileActiveTab === 'reduktion'" x-cloak x-collapse class="w-full pb-4">
+              <li x-show="mobileActiveTab === 'reduktion'" x-cloak x-collapse class="w-full pb-4 animated_line">
                 <ul class="nest-submenu w-full pl-12 text-xs font-normal">
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Harnstoff Ammoniak</span>
                       <span aria-label="Harnstoff Ammoniak Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -474,26 +478,26 @@
               </li>
 
               <!-- 2.5 Trigger Item: Service & Instandhaltung -->
-              <li class="pb-12 flex flex-col">
+              <li class="pb-12 flex flex-col animated_line">
                 <button type="button" @click="mobileActiveTab = (mobileActiveTab === 'service' ? null : 'service')"
                   class="flex w-full items-center justify-between text-left group cursor-pointer">
-                  <span class="inline-flex items-center gap-2 group-hover:underline text-sm font-semibold">
+                  <span class="inline-flex items-center gap-2 text-sm font-semibold">
                     <span>Service Instandhaltung</span>
-                    <i data-lucide="arrow-right" class="size-18"></i>
+                    <i data-lucide="arrow-right" class="size-18 transition-transform duration-200"
+                      :class="mobileActiveTab === 'service' ? 'rotate-90' : ''"></i>
                   </span>
                   <span
                     class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
-                    <i data-lucide="chevron-right" class="size-18 inline-block transition-transform duration-200"
-                      :class="mobileActiveTab === 'service' ? 'rotate-90' : ''"></i>
+                    <i data-lucide="chevron-right" class="size-18 inline-block"></i>
                   </span>
                 </button>
               </li>
 
               <!-- LEVEL 3: Service UL -->
-              <li x-show="mobileActiveTab === 'service'" x-cloak x-collapse class="w-full pb-4">
+              <li x-show="mobileActiveTab === 'service'" x-cloak x-collapse class="w-full pb-4 animated_line">
                 <ul class="nest-submenu w-full pl-12 text-xs font-normal">
                   <li class="flex items-center justify-between pb-12">
-                    <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+                    <a href="#" class=" font-semibold flex items-center justify-between w-full">
                       <span>Wartung Support</span>
                       <span aria-label="Wartung Support Details"
                         class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -508,8 +512,8 @@
           </li>
 
           <!-- 3. Link: Referenzen -->
-          <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+          <li class="menu-block flex items-center justify-between animated_line">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Referenzen</span>
               <span aria-label="Referenzen Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -519,8 +523,8 @@
           </li>
 
           <!-- 4. Link: Downloads -->
-          <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+          <li class="menu-block flex items-center justify-between animated_line">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Downloads</span>
               <span aria-label="Downloads Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -530,8 +534,8 @@
           </li>
 
           <!-- 5. Link: Karriere -->
-          <li class="menu-block flex items-center justify-between">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+          <li class="menu-block flex items-center justify-between animated_line">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Karriere</span>
               <span aria-label="Karriere Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -541,8 +545,8 @@
           </li>
 
           <!-- 6. Link: Kontakt -->
-          <li class="flex items-center justify-between py-4">
-            <a href="#" class="hover:underline font-semibold flex items-center justify-between w-full">
+          <li class="menu-block flex items-center justify-between py-4 animated_line">
+            <a href="#" class=" font-semibold flex items-center justify-between w-full">
               <span>Kontakt</span>
               <span aria-label="Kontakt Details"
                 class="rounded-2xl border-2 border-white px-24 py-1 font-semibold w-108 h-30 hidden md:flex justify-center items-center text-sm">
@@ -560,11 +564,11 @@
   <!-- Main -->
   <main id="content">
     <!-- hero section -->
-    <section class="">
+    <section class="ctm_sec">
       <div class="row cols_1">
         <div class="col">
           <div class="component">
-            <div class="relative w-full h-[calc(100vh-0px)] -mt-182 overflow-hidden z-0">
+            <div class="relative w-full h-[calc(100vh-0px)]  overflow-hidden z-0">
               <!-- SWIPER CONTAINER -->
               <div class="swiper heroSwiper w-full h-full">
                 <div class="swiper-wrapper">
@@ -573,7 +577,30 @@
                   <div class="swiper-slide relative w-full h-full">
                     <div class="h-full flex items-end justify-start pb-100">
                       <!-- Background Video -->
+                         <video class="absolute inset-0 z-0 h-full w-full object-cover"
+                                      autoplay
+                                      muted
+                                      loop
+                                      playsinline
+                                      preload="metadata"
+                                      poster="./assets/images/Rauchgasreinigung-Neu-gedacht-DrySoTec-VDH-Group-p-2000-hero.webp"
+                                      aria-label="Industrieanlage bei Nacht"
+                                    >
+                                      <source src="assets/videos/MUSKIBildwelt_Kling.webm" type="video/webm">
+                                      <source
+                                        src="./assets/videos/MUSKIBildwelt_Kling.mp4"
+                                        type="video/mp4"
+                                      />
 
+                                      <!-- Fallback for browsers that don't support HTML5 video -->
+                                      <img
+                                        src="./assets/images/Rauchgasreinigung-Neu-gedacht-DrySoTec-VDH-Group-p-2000-hero.webp"
+                                        alt="Industrieanlage bei Nacht"
+                                        class="h-full w-full object-cover"
+                                        width="1920"
+                                        height="1080"
+                                      />
+                                    </video>
                       <!-- Dark Blue Gradient Overlay -->
                       <div class="hero-slide-overlay absolute inset-0 z-10"></div>
 
@@ -642,14 +669,13 @@
       </div>
     </section>
 
-
     <!-- Swiper Section 2 -->
     <section class="py-sec-lg">
       <div class="row cols_1">
         <div class="col">
-          <div class="component w-full">
-            <div class="section-swiper overflow-hidden">
-              <div class="overflow-visible px-20 md:px-100 lg:px-250">
+          <div class="component">
+            <div class="section-swiper overflow-x-hidden">
+              <div class="overflow-visible px-20 lg:px-180 xl:px-230">
                 <div class="relative w-full md:block-container">
                   <div class="swiper swiper-cards overflow-visible! w-full h-full">
                     <!-- Additional required wrapper -->
@@ -831,7 +857,7 @@
 
                   <!-- Navigation buttons -->
                   <button type="button"
-                    class="md:flex hidden swiper-cards_prev absolute top-1/2 z-20 -translate-y-1/2 p-3 text-white/80 hover:text-white hover:scale-110 transition-all duration-200 md:-left-85 lg:-left-180"
+                    class="md:flex hidden swiper-cards_prev absolute top-1/2 z-20 -translate-y-1/2 p-3 text-white/80 hover:text-white hover:scale-110 transition-all duration-200 left-0 lg:-left-140 xl:-left-180"
                     aria-label="Previous slide">
                     <span class="icon-md-4">
                       <svg xmlns="http://www.w3.org/2000/svg" height="40px" width="40px" viewBox="0 0 28 51" fill="none"
@@ -846,7 +872,7 @@
                   </button>
 
                   <button type="button"
-                    class="md:flex hidden swiper-cards_next absolute  top-1/2 z-20 -translate-y-1/2 p-3 text-white/80 hover:text-white hover:scale-110 transition-all duration-200 md:-right-85 lg:-right-180"
+                    class="md:flex hidden swiper-cards_next absolute  top-1/2 z-20 -translate-y-1/2 p-3 text-white/80 hover:text-white hover:scale-110 transition-all duration-200 right-0 lg:-right-140 xl:-right-180"
                     aria-label="Next slide">
                     <span class="icon-md-4">
                       <svg xmlns="http://www.w3.org/2000/svg" height="40px" width="40px" viewBox="0 0 28 52" fill="none"
@@ -869,6 +895,7 @@
       </div>
 
     </section>
+   
     <!-- section-content- text -->
     <section class="my-sec-lg">
       <div class="container">
@@ -909,34 +936,17 @@
                         <div class="vflex gap-compact-sm text-dark_blue text-18 font-normal">
                           <div class="prose-tick text-md font-light space-y-16 leading-relaxed">
                             <p>Unsere langjährige Erfahrung mit den Verfahren</p>
-                              <div>
-                                  <ul>
-                                    <li>Trockenabsorption</li>
-                                </ul>
-                              </div>
                           </div>
                           
                           <div class="bullet-list space-y-8 text-16 py-12">
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>Trockenabsorption</div>
-                            </div>
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>Trockenabsorption</div>
-                            </div>
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>Trockenabsorption</div>
-                            </div>
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>Trockenabsorption</div>
-                            </div>
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>Trockenabsorption</div>
-                            </div>
+                            <ul>
+                              <li>Trockenabsorption</li>
+                              <li>Sprühabsorption</li>
+                              <li>MKT-Systeme</li>
+                              <li>Nasswäschen</li>
+                              <li>Kostenoptimierung</li>
+                            </ul>
+                           
                           </div>
                           <div class="text-md font-light space-y-16 leading-relaxed">
                             <p>erlauben es uns, Ihre Aufgabenstellung optimal zu lösen.</p>
@@ -1030,28 +1040,18 @@
                       <div class="vflex justify-end items-start h-full flex-col gap-compact-md">
                         <h3 class="card-title text-22 text-blue">Unsere Systeme zeichnen sich aus durch:</h3>
                         <div class="vflex gap-compact-sm text-dark_blue text-18 font-normal">
-
                           <div class="bullet-list space-y-8 text-16 py-12">
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>sichere Unterschreitung bestehender Grenzwerte (auch in Extremsituationen)</div>
-                            </div>
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>einfach zu betreibende Technologie, dadurch sicherer Betrieb in Bezug auf die
-                                Leistung minimierte Investitionen</div>
-                            </div>
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>geringen Wartungsaufwand</div>
-                            </div>
-                            <div class="flex gap-12 items-start">
-                              <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                              <div>zusätzliche Kostenvorteile in Bezug auf weitergehende Wärmenutzung der Rauchgaswärme.
-                              </div>
-                            </div>
-
+                            <ul>
+                              <li>sichere Unterschreitung bestehender Grenzwerte (auch in Extremsituationen)</li>
+                              <li>einfach zu betreibende Technologie, dadurch sicherer Betrieb in Bezug auf die
+                                Leistung minimierte Investitionen</li>
+                              <li>geringen Wartungsaufwand</li>
+                              <li>Nasswäschen</li>
+                              <li>zusätzliche Kostenvorteile in Bezug auf weitergehende Wärmenutzung der Rauchgaswärme.</li>
+                            </ul>
+                           
                           </div>
+                          
                           <a href="#" class="btn-primary">MEHR ERFAHREN</a>
                         </div>
                       </div>
@@ -1080,27 +1080,19 @@
           <div class="col">
             <div class="component w-full block">
               <div class="relative bg-white p-box rounded-3xl overflow-hidden w-full">
-                <div class="flex flex-col gap-sec-lg">
-                  <div
-                    class="flex flex-col justify-start lg:justify-center items-start lg:items-center text-left lg:text-center gap-32 max-w-820 mx-auto">
+                <div class="v-blockcard v-blockcard-center flex flex-col gap-sec-lg">
+                  <div class="vflex alignment-center gap-32 max-w-820 mx-auto">
                     <h2 class="text-35">Fach- und Produktbereiche</h2>
                     <div class="prose space-y-20 text-18">
                       <p>Wir befassen uns mit:</p>
-                      <div class="bullet-list space-y-8 text-16 py-12 text-left w-fit mx-auto">
-                        <div class="flex gap-12 items-start">
-                          <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                          <div>Planung und Bau neuer innovativer Rauchgasreinigungsanlagen</div>
-                        </div>
-                        <div class="flex gap-12 items-start">
-                          <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                          <div>Umbau/Ertüchtigung bestehender Anlagen nach neuesten Erkenntnissen</div>
-                        </div>
-                        <div class="flex gap-12 items-start">
-                          <img src="./assets/images/bae12_icon-checkbox.svg" alt="" class="shrink-0 mt-3">
-                          <div>anlagentechnische Optimierung bestehender Systeme</div>
-                        </div>
-
-
+                      <div class="bullet-list">
+                            <ul>
+                              <li>Planung und Bau neuer innovativer Rauchgasreinigungsanlagen</li>
+                              <li>Umbau/Ertüchtigung bestehender Anlagen nach neuesten Erkenntnissen</li>
+                              <li>anlagentechnische Optimierung bestehender Systeme</li>
+                            
+                            </ul>
+                  
                       </div>
                       <p>Unser Leistungsspektrum umfasst dabei alle Projektphasen von der Erfassung der Problemstellung
                         über das Erarbeiten systemangepasster Konzepte bis hin zur Umsetzung des besten Konzepts als
@@ -1205,7 +1197,7 @@
 
                       <!-- Slide 2 -->
                       <div class="swiper-slide h-auto!">
-                        <div class="img-wrapper flex flex-col gap-20 w-275 mx-auto">
+                        <div class="img-wrapper flex flex-col gap-20   w-100 md:w-275 mx-auto">
                           <div class="partner-logo-item">
                             <img src="./assets/images/mva.webp" alt="MVA" loading="lazy">
                           </div>
@@ -1217,7 +1209,7 @@
 
                       <!-- Slide 3 -->
                       <div class="swiper-slide h-auto!">
-                        <div class="img-wrapper flex flex-col gap-20 w-275 mx-auto">
+                        <div class="img-wrapper flex flex-col gap-20  w-100 md:w-275 mx-auto">
                           <div class="partner-logo-item">
                             <img src="./assets/images/italcementi.webp" alt="italcementi" loading="lazy">
                           </div>
@@ -1229,7 +1221,7 @@
 
                       <!-- Slide 4 -->
                       <div class="swiper-slide h-auto!">
-                        <div class="img-wrapper flex flex-col gap-20 w-275 mx-auto">
+                        <div class="img-wrapper flex flex-col gap-20   w-100 md:w-275 mx-auto">
                           <div class="partner-logo-item">
                             <img src="./assets/images/atlanticcopper.webp" alt="atlantic copper" loading="lazy">
                           </div>
@@ -1241,7 +1233,7 @@
 
                       <!-- Slide 5 -->
                       <div class="swiper-slide h-auto!">
-                        <div class="img-wrapper flex flex-col gap-20 w-275 mx-auto">
+                        <div class="img-wrapper flex flex-col gap-20   w-100 md:w-275 mx-auto">
                           <div class="partner-logo-item">
                             <img src="./assets/images/bib.webp" alt="bib" loading="lazy">
                           </div>
@@ -1253,7 +1245,7 @@
 
                       <!-- Slide 6 -->
                       <div class="swiper-slide h-auto!">
-                        <div class="img-wrapper flex flex-col gap-20 w-275 mx-auto">
+                        <div class="img-wrapper flex flex-col gap-20   w-100 md:w-275 mx-auto">
                           <div class="partner-logo-item">
                             <img src="./assets/images/a_zak.webp" alt="Zak" loading="lazy">
                           </div>
@@ -1265,7 +1257,7 @@
 
                       <!-- Slide 7 -->
                       <div class="swiper-slide h-auto!">
-                        <div class="img-wrapper flex flex-col gap-20 w-275 mx-auto">
+                        <div class="img-wrapper flex flex-col gap-20   w-100 md:w-275 mx-auto">
                           <div class="partner-logo-item">
                             <img src="./assets/images/nestle-p-1080.webp" alt="nestle" loading="lazy">
                           </div>
@@ -1277,7 +1269,7 @@
 
                       <!-- Slide 8 -->
                       <div class="swiper-slide h-auto!">
-                        <div class="img-wrapper flex flex-col gap-20 w-275 mx-auto justify-center h-full">
+                        <div class="img-wrapper flex flex-col gap-20   w-100 md:w-275 mx-auto justify-center h-full">
                           <div class="partner-logo-item">
                             <img src="./assets/images/swg.webp" alt="SWG" loading="lazy">
                           </div>
@@ -1420,10 +1412,13 @@
                   </div>
                 </div>
                 <div class="flex justify-start items-center gap-10 flex-wrap">
-                  <a href="#">
+                  <a href="#" class="rounded-sm">
                     <img src="/assets/images/linkedin-icon.svg" alt="linkedin icon">
                   </a>
-
+                  <a href="#" class="rounded-sm">
+                    <img src="./assets/images/twitter-dark.svg" alt="linkedin icon" class="size-24 ">
+                  </a>
+ 
                 </div>
               </div>
               <!-- foot block 2 -->
@@ -1509,7 +1504,7 @@
                 © 2026 DrySoTec GmbH
               </div>
               <div
-                class="*:text-white flex gap-20  justify-center items-center text-sm font-normal [&_a]:transition [&_a]:hover:underline [&_a]:hover:underline-offset-2 w-full lg:w-auto wrap lg:flex-nowrap">
+                class="*:text-white flex gap-20  justify-center items-center text-sm font-normal [&_a]:transition [&_a]: [&_a]:-offset-2 w-full lg:w-auto wrap lg:flex-nowrap">
                 <a href="#">
                   <span>Impressum</span>
                 </a>
@@ -1535,7 +1530,64 @@
   <script src="assets/js/swiper-bundle.min.js"></script>
 
   <script src="assets/js/script.js"></script>
+<script>
+  document.querySelectorAll('.swiper-test').forEach((container) => {
+    const wrapper = container.querySelector('.swiper-wrapper');
+    if (!wrapper) return;
 
+    const slides = wrapper.querySelectorAll('.swiper-slide');
+    const originalSlides = Array.from(slides);
+
+    // If total slides are 4 or fewer, duplicate them until total count is > 4
+    if (slides.length > 0 && slides.length <= 4) {
+      while (wrapper.querySelectorAll('.swiper-slide').length <= 4) {
+        originalSlides.forEach((slide) => {
+          wrapper.appendChild(slide.cloneNode(true));
+        });
+      }
+    }
+  });
+
+  const swiper = new Swiper('.swiper-test', {
+    // Default settings (Mobile first: < 640px)
+    slidesPerView: 1,
+    spaceBetween: 32,
+    loop: true,
+    centeredSlides: false,
+
+    // Pagination dots
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // Responsive Breakpoints
+    breakpoints: {
+      // Mobile Landscape / Small Tablets (>= 640px)
+      640: {
+        slidesPerView: 2,
+        spaceBetween: 20,
+      },
+      // Tablets / Laptops (>= 768px)
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 24,
+      },
+      // Desktops (>= 1024px)
+      1024: {
+        slidesPerView: 4,
+        spaceBetween: 30,
+        centeredSlides: false,
+      },
+    },
+  });
+</script>
 </body>
 
 </html>
