@@ -327,6 +327,19 @@ document.addEventListener('alpine:init', () => {
     open: false,
     activeEl: null,
 
+    init() {
+      // Re-initialize Lucide icons whenever the modal opens
+      this.$watch('open', (isOpen) => {
+        if (isOpen) {
+          this.$nextTick(() => {
+            if (window.lucide && typeof window.lucide.createIcons === 'function') {
+              window.lucide.createIcons();
+            }
+          });
+        }
+      });
+    },
+
     get currentTitle() {
       return this.activeEl ? this.activeEl.getAttribute('data-title') : '';
     },

@@ -7,6 +7,7 @@
   <!-- <script defer src="assets/js/collapse.min.js"></script> -->
   <script defer src="assets/js/alpine.js"></script>
 
+  <link rel="stylesheet" href="./assets/css/aos.css">
   <link rel="stylesheet" href="./assets/css/swiper.css" />
   <link rel="stylesheet" href="./assets/css/output.css" />
   <link rel="shortcut icon" href="favicon.webp" type="image/x-icon">
@@ -701,11 +702,73 @@
             </div>
         </section>
 
-    <!-- footer -->
-    <footer>
+        <!-- section-page-end -->
+         <section class="pb-8">
+            <div class="container">
+               <div class="component">
+                  <div class="box-white bg-white rounded-3xl flex flex-col px-block py-box gap-fluid" data-aos="fade-up" data-aos-duration="1000">
+                      <!-- Top Title -->
+                       <div class="flex justify-center items-center flex-col gap-fluid">
+                          <a href="#">
+                            <img src="./assets/images/vdh-logo.svg" alt="VDH Group | Ihr Partner im Anlagenbau & Umwelttechnik" class="vdh-group-logo">
+                          </a>
+                          <div class="divider w-154 h-1 bg-red"></div>
+                       </div>
+                       <!-- bottom blocks -->
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xlg:grid-cols-5 gap-32">
+                            <div class="flex flex-col justify-start items-center text-center gap-24">
+                                <a href="#">
+                                  <img src="./assets/images/msu-logo-blue.svg" alt="Mehldau & Steinfath Umwelttechnik">
+                                </a>
+                                <div class="text-sm">
+                                    <p>Mehldau & Steinfath Umwelttechnik ist Ihr Partner und Lösungsanbieter im Bereich der Rauchgasentstickung für Großfeuerungsanlagen.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-start items-center text-center gap-24">
+                                <a href="#">
+                                  <img src="./assets/images/hkl-logo-blue.svg" alt="HKL Anlagentechnik">
+                                </a>
+                                <div class="text-sm">
+                                    <p>HKL Anlagentechnik übernimmt die Beratung, Planung und Fertigung von Lager-, Abfüll-, Umschlag-Anlagen in allen Werkstoffen und Produktionsanlagen für flüssige Medien und Gase in allen Anwendungsbereichen.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-start items-center text-center gap-24">
+                                <a href="#">
+                                  <img src="./assets/images/mse-logo-blue.svg" alt="M&S Environmental Technologies">
+                                </a>
+                                <div class="text-sm">
+                                    <p>Im Ausland unterstützt M&S Environmental Technologies tatkräftig im Bereich Engineering, Inbetriebnahme und Service mit Sitz in Ostrava, Tschechien.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-start items-center text-center gap-24">
+                                <a href="#">
+                                  <img src="./assets/images/dry-logo-blue.svg" alt="DrySoTec">
+                                </a>
+                                <div class="text-sm">
+                                    <p>DrySoTec ist Ihr Spezialist für innovative, ökologisch und ökonomisch optimierte Rauchgasreinigungen nach neuestem Stand der Technik.</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-start items-center text-center gap-24">
+                                <a href="#">
+                                  <img src="./assets/images/vysion-logo-blue.svg" alt="vysion aset">
+                                </a>
+                                <div class="text-sm">
+                                    <p>vysion-aset errichtet Elektro-, Mess-, Steuerung- und regeltechnische Anlagen in der Industrie, der Energieerzeugung und Energieverteilung. Zu vysion-asets Aufgaben gehören die Planung und Errichtung von Teil- und Komplettanlagen.</p>
+                                </div>
+                            </div>
+                        </div>
+                  </div>
+                 
+               </div>
+            </div>
+         </section>
+   
+  </main>
+ <!-- footer -->
+    <footer class="pb-sec-lg">
       <div class="container">
         <div class="space-y-8">
-          <div class="footer-top box-white bg-footer_bg rounded-3xl flex flex-col gap-fluid">
+          <div class="footer-top box-white bg-footer_bg rounded-3xl flex flex-col py-block px-block md:px-box" data-aos="fade-up" data-aos-duration="1000">
             <div>
               <a href="#" aria-label="DrySoTec Startseite">
                 <img src="./assets/images/Drysotec-logo-dark.svg" alt="DrySoTec" class="w-136">
@@ -822,13 +885,13 @@
             </div>
           </div>
           <!-- copyright block -->
-          <div class="bg-dark_blue px-70 py-32 rounded-3xl">
+          <div class="bg-dark_blue px-24 md:px-70 py-32 rounded-3xl" data-aos="fade-up" data-aos-duration="1000">
             <div class="flex justify-center lg:justify-between items-center gap-20 flex-wrap text-center">
               <div class="text-white font-semibold text-sm text-center w-full lg:w-auto">
                 © 2026 DrySoTec GmbH
               </div>
               <div
-                class="*:text-white flex gap-20  justify-center items-center text-sm font-normal [&_a]:transition [&_a]: [&_a]:-offset-2 w-full lg:w-auto wrap lg:flex-nowrap">
+                class="*:text-white flex gap-20  justify-center items-center text-sm font-normal [&_a]:transition [&_a]: [&_a]:-offset-2 w-full lg:w-auto flex-wrap lg:flex-nowrap">
                 <a href="#">
                   <span>Impressum</span>
                 </a>
@@ -846,14 +909,23 @@
 
 
     </footer>
-  </main>
+     <!-- Back to top -->
+    <button id="backToTop"
+        class="fixed bottom-20 right-20 md:bottom-32 md:right-32 z-99999 flex size-56 translate-y-5 items-center justify-center rounded-full bg-primary text-secondary opacity-0 invisible shadow-lg text-2xl not-md:scale-80 not-xl:hidden"
+        aria-label="Back to top">
+        <svg class="absolute inset-0 -rotate-90" viewBox="0 0 100 100">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="4"></circle>
+            <circle id="progressCircle" cx="50" cy="50" r="46" fill="none" class="stroke-secondary" stroke-width="4"
+                stroke-linecap="round" style="stroke-dasharray: 289.027; stroke-dashoffset: 245.318;"></circle>
+        </svg>
+        ↑
+    </button>
 
-  <!-- Production version -->
-  <script src="assets/js/lucide.js"></script>
-
-  <script src="assets/js/swiper-bundle.min.js"></script>
-
-  <script src="assets/js/script.js"></script>
+    <!-- Production version -->
+  <script src="assets/js/aos.js"></script>
+<script src="assets/js/lucide.js"></script>
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/script.js"></script>
 
 </body>
 

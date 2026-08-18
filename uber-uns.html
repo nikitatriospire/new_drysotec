@@ -707,7 +707,7 @@
                   </div>
           </section>
 
-      <!-- section-certificate -->
+    <!-- section-certificate -->
      <section class="my-sec-lg">
       <div class="container">
         <div class="component">
@@ -728,7 +728,7 @@
                       <!-- 1. CERTIFICATES GRID -->
                       <div
                         class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-y-48">
-                        <!-- CARD 1 -->
+                    <!-- CARD 1 -->
                         <div class="cert-card flex flex-col lg:flex-row justify-center  lg:justify-start items-center lg:items-start gap-16 px-16 pb-48 border-b border-b-[#e2e8f0]"
                           data-title="ISO-9001_DrySoTec_10.2026-DE-scaled"
                           data-img="./assets/images/certificate1.jpg"
@@ -754,7 +754,7 @@
                             </h3>
                             <div class="flex flex-row lg:flex-col flex-wrap lg:flex-nowrap justify-between lg:justify-start gap-10 text-xs font-bold text-blue">
                               <a href="./assets/pdf/cert-1.pdf"  class="text-16 inline-flex items-center hover:underline transition group gap-10" >
-                                <span class="size-32 bg-dark_blue  text-white rounded-xl p-8 flex items-center justify-center transition">
+                              <span class="size-32 bg-dark_blue  text-white rounded-xl p-8 flex items-center justify-center transition">
                                   <i data-lucide="download"></i>  
                                 </span>
                                 Download
@@ -950,48 +950,50 @@
                         </div>
                       </div>
                     <!-- LIGHTBOX GALLERY MODAL -->
-                      <div x-show="open" 
-                          x-cloak
-                          x-transition.opacity
-                          @click.self="closeModal()"
-                          class="fixed inset-0 z-1000 flex flex-col justify-between items-center py-48 px-24 bg-[#000c] backdrop-blur-xs">
-                        
-                        <!-- Modal Header -->
-                        <div class="flex justify-center gap-32 items-center text-white w-fit  pointer-events-auto">
-                          <div class="flex-1 text-center font-medium text-sm md:text-base pointer-events-none" x-text="currentTitle"></div>
-                          <button type="button" 
-                                  @click="closeModal()" 
-                                  class="text-white/80 hover:text-white p-2 text-3xl font-bold cursor-pointer transition" 
-                                  aria-label="Schließen">
-                            <i data-lucide="x"></i>  
-                          </button>
+                      <template x-teleport="body">
+                        <div x-show="open" 
+                            x-cloak
+                            x-transition.opacity
+                            @click.self="closeModal()"
+                            class="fixed inset-0 z-1000 flex flex-col justify-center gap-48 items-center py-48 px-24 bg-[#000c] backdrop-blur-xs">
+                          
+                          <!-- Modal Header -->
+                          <div class="flex justify-center gap-32 items-center text-white w-fit  pointer-events-auto">
+                            <div class="flex-1 text-center font-medium text-sm md:text-base pointer-events-none" x-text="currentTitle"></div>
+                            <button type="button" 
+                                    @click="closeModal()" 
+                                    class="text-white/80 hover:text-white p-2 text-3xl font-bold cursor-pointer transition" 
+                                    aria-label="Schließen">
+                              <i data-lucide="x" class="size-18"></i>  
+                            </button>
+                          </div>
+
+                          <!-- Modal Content & Controls -->
+                          <div @click.self="closeModal()" class="relative flex items-center justify-center w-full max-w-4xl">
+                            <!-- Previous Arrow -->
+                            <button type="button" @click.stop="prev()" class="absolute -left-14 md:left-40 xl:left-3/12 p-3 text-white/70 hover:text-white cursor-pointer z-10" aria-label="Vorheriges">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none"><path d="M17.3663 23.7825L17.2088 23.6475L5.47125 13.4475C5.07375 13.1025 4.82625 12.585 4.82625 12.0075C4.82625 11.43 5.08125 10.9125 5.47125 10.5675L17.1862 0.375L17.3813 0.2025C17.5688 0.0749998 17.7937 0 18.0337 0C18.6862 0 19.2188 0.555 19.2188 1.245V22.755C19.2188 23.445 18.6862 24 18.0337 24C17.7862 24 17.5538 23.9175 17.3663 23.7825Z" fill="currentColor"></path></svg>
+                            </button>
+
+                            <!-- Preview Image -->
+                            <img :src="currentImg" :alt="currentTitle" class="max-h-[70vh] max-w-280 md:max-w-400 w-full rounded-lg shadow-2xl bg-white object-contain select-none">
+
+                            <!-- Next Arrow -->
+                            <button type="button" @click.stop="next()" class="absolute -right-14 md:right-40 xl:right-3/12 p-3 text-white/70 hover:text-white cursor-pointer z-10" aria-label="Nächstes">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none"><path d="M6.63375 23.7825L6.79125 23.6475L18.5287 13.4475C18.9262 13.1025 19.1737 12.585 19.1737 12.0075C19.1737 11.43 18.9187 10.9125 18.5287 10.5675L6.81375 0.375L6.61875 0.2025C6.43125 0.0749998 6.20625 0 5.96625 0C5.31375 0 4.78125 0.555 4.78125 1.245V22.755C4.78125 23.445 5.31375 24 5.96625 24C6.21375 24 6.44625 23.9175 6.63375 23.7825Z" fill="currentColor"></path></svg>
+                            </button>
+                          </div>
+
+                          <!-- Modal Download Action -->
+                          <a :href="currentPdf" download class="text-white flex justify-center items-center gap-12">
+                            <span class="size-32 rounded-lg bg-dark_blue p-8 flex justify-center items-center">
+                                <i data-lucide="download" class="size-24 text-white"></i>  
+                            </span>
+                            Download als PDF
+                          </a>
+
                         </div>
-
-                        <!-- Modal Content & Controls -->
-                        <div @click.self="closeModal()" class="relative flex items-center justify-center w-full max-w-4xl">
-                          <!-- Previous Arrow -->
-                          <button type="button" @click.stop="prev()" class="absolute left-3/12 p-3 text-white/70 hover:text-white cursor-pointer z-10" aria-label="Vorheriges">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none"><path d="M17.3663 23.7825L17.2088 23.6475L5.47125 13.4475C5.07375 13.1025 4.82625 12.585 4.82625 12.0075C4.82625 11.43 5.08125 10.9125 5.47125 10.5675L17.1862 0.375L17.3813 0.2025C17.5688 0.0749998 17.7937 0 18.0337 0C18.6862 0 19.2188 0.555 19.2188 1.245V22.755C19.2188 23.445 18.6862 24 18.0337 24C17.7862 24 17.5538 23.9175 17.3663 23.7825Z" fill="currentColor"></path></svg>
-                          </button>
-
-                          <!-- Preview Image -->
-                          <img :src="currentImg" :alt="currentTitle" class="max-h-[70vh] w-auto rounded-lg shadow-2xl bg-white object-contain select-none">
-
-                          <!-- Next Arrow -->
-                          <button type="button" @click.stop="next()" class="absolute right-3/12 p-3 text-white/70 hover:text-white cursor-pointer z-10" aria-label="Nächstes">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" viewBox="0 0 24 24" fill="none"><path d="M6.63375 23.7825L6.79125 23.6475L18.5287 13.4475C18.9262 13.1025 19.1737 12.585 19.1737 12.0075C19.1737 11.43 18.9187 10.9125 18.5287 10.5675L6.81375 0.375L6.61875 0.2025C6.43125 0.0749998 6.20625 0 5.96625 0C5.31375 0 4.78125 0.555 4.78125 1.245V22.755C4.78125 23.445 5.31375 24 5.96625 24C6.21375 24 6.44625 23.9175 6.63375 23.7825Z" fill="currentColor"></path></svg>
-                          </button>
-                        </div>
-
-                        <!-- Modal Download Action -->
-                        <a :href="currentPdf" download class="text-white flex justify-center items-center gap-12">
-                          <span class="size-32 rounded-lg bg-dark_blue p-8 flex justify-center items-center">
-                              <i data-lucide="download"></i>  
-                          </span>
-                          Download als PDF
-                        </a>
-
-                      </div>
+                      </template>
                     </div>
               </div>
           </div>
@@ -1003,7 +1005,7 @@
          <section class="pb-8">
             <div class="container">
                <div class="component">
-                  <div class="box-white bg-white rounded-3xl flex flex-col px-block py-box" data-aos="fade-up" data-aos-duration="1000">
+                  <div class="box-white bg-white rounded-3xl flex flex-col px-block py-box gap-fluid" data-aos="fade-up" data-aos-duration="1000">
                       <!-- Top Title -->
                        <div class="flex justify-center items-center flex-col gap-fluid">
                           <a href="#">
