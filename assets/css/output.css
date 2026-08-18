@@ -2230,6 +2230,10 @@
   font-style: normal;
   font-display: swap;
 }
+body {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
 @layer base {
   * {
     margin: 0;
@@ -2871,39 +2875,6 @@
   .col :is(u, a):not(.btn-primary, .btn-secondary, .btn-border) {
     text-decoration-line: underline;
     text-underline-offset: 2px;
-  }
-  .col.box-white {
-    margin-bottom: calc(var(--spacing) * 12);
-    border-radius: var(--radius-xl);
-    background-color: var(--color-white);
-  }
-  .col.box-dark {
-    margin-bottom: calc(var(--spacing) * 12);
-    border-radius: var(--radius-xl);
-    background-color: var(--color-dark_blue);
-    padding: var(--padding-block);
-    color: var(--color-white);
-  }
-  .col.box-blue {
-    margin-bottom: calc(var(--spacing) * 12);
-    border-radius: var(--radius-xl);
-    background-color: var(--color-blue);
-    padding: var(--padding-block);
-    color: var(--color-white);
-  }
-  .col.box-gradient-dark {
-    border-radius: var(--radius-xl);
-    --tw-gradient-position: to right;
-    @supports (background-image: linear-gradient(in lab, red, red)) {
-      --tw-gradient-position: to right in oklab;
-    }
-    background-image: linear-gradient(var(--tw-gradient-stops));
-    --tw-gradient-from: var(--color-navy-blue);
-    --tw-gradient-from-position: 20%;
-    --tw-gradient-to: var(--color-blue);
-    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
-    --tw-gradient-to-position: 80%;
-    padding: var(--padding-block);
   }
   .footer-links ul li a, .footer-links1 ul li a {
     transition-property: color, background-color, border-color, outline-color, text-decoration-color, fill, stroke, --tw-gradient-from, --tw-gradient-via, --tw-gradient-to, opacity, box-shadow, transform, translate, scale, rotate, filter, -webkit-backdrop-filter, backdrop-filter, display, content-visibility, overlay, pointer-events;

@@ -131,6 +131,10 @@
   --gradient-light: linear-gradient(rgba(0, 102, 178, 0.4), rgba(23, 24, 53, 0.8));
   --transition: all 0.48s ease-in-out;
 }
+body {
+  -webkit-hyphens: auto;
+  hyphens: auto;
+}
 
 @layer base {
   * {
@@ -384,19 +388,7 @@ span {
   .col :is(u, a):not(.btn-primary, .btn-secondary, .btn-border) {
     @apply underline underline-offset-2;
   }
-  /* for box  */
-  .col.box-white{
-    @apply bg-white rounded-xl mb-12
-  }
-  .col.box-dark{
-    @apply bg-dark_blue rounded-xl p-block text-white mb-12
-  }
-  .col.box-blue{
-    @apply bg-blue rounded-xl p-block text-white mb-12
-  }
-  .col.box-gradient-dark{
-    @apply bg-gradient-dark rounded-xl p-block 
-  }
+  
   /* footer */
   .footer-links ul li a, .footer-links1 ul li a{
     @apply transition hover:underline
