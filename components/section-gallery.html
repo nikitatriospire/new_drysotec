@@ -1,0 +1,261 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DrySoTec GmbH | DrySoTec GmbH</title>
+
+    <script defer src="assets/js/alpine.js"></script>
+    <link rel="stylesheet" href="./assets/css/swiper.css">
+    <link rel="stylesheet" href="./assets/css/output.css">
+    <link rel="shortcut icon" href="favicon.webp" type="image/x-icon">
+</head>
+<body>
+    <a class="skip_link" href="#content">Skip to content</a>
+    
+    <!-- Main -->
+    <main id="content">
+
+      <!-- section-gallery -->
+       <div class="ctm_sec my-sec-lg">
+          <div class="container">
+              <div class="row cols_1">
+                  <div class="col">
+                      <div class="component">
+                          <div class="flex flex-col gap-sec-lg">
+                              <div>
+                                  <h2 class="text-35 font-medium">Ein kleiner Eindruck von unserer Arbeit</h2>
+                              </div>
+                              <!-- GALLERY WRAPPER WITH ALPINE DATA -->
+                                <div x-data="imageGallery" 
+                                    @keydown.escape.window="closeModal()" 
+                                    @keydown.left.window="if(open) prev()" 
+                                    @keydown.right.window="if(open) next()" 
+                                    class="relative w-full py-6">
+
+                                  <!-- 1. GRADIENT OVERLAYS (LEFT & RIGHT) -->
+                                  <div class="pointer-events-none absolute left-0 top-0 bottom-0 z-20 w-46 md:w-96 bg-[linear-gradient(90deg,rgb(231,235,247),rgba(0,0,0,0))]"></div>
+                                  <div class="pointer-events-none absolute right-0 top-0 bottom-0 z-20 w-46 md:w-96 bg-[linear-gradient(90deg,#0000,#e7ebf7)]"></div>
+
+                                  <!-- 2. SWIPER SLIDER -->
+                                   <div class="flex justify-center gap-10 items-center">
+                                      <div class="swiper-button-prev z-30! size-24! "></div>
+                                          <div class="swiper gallerySwiper px-16">
+                                              <div class="swiper-wrapper pb-60">
+
+                                                <!-- SLIDE 1 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                      data-title="DrySoTec" 
+                                                      data-img="./assets/images/Liefer-und Leistungsspektrum4.webp">
+                                                    <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                      <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                        <i data-lucide="plus"></i>  
+                                                      </div>
+                                                      <div class="w-full h-320">
+                                                        <img src="./assets/images/Liefer-und Leistungsspektrum4.webp" alt="Gallery Image 1" class="w-full h-full object-cover">
+                                                      </div>
+                                                    </div>
+                                                </div>
+
+                                                <!-- SLIDE 2 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-und-Leistungsspektrum2.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-und-Leistungsspektrum2.webp" alt="Gallery Image 2" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <!-- SLIDE 3 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-und-Leistungsspektrum3.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-und-Leistungsspektrum3.webp" alt="Gallery Image 3" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <!-- SLIDE 4 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-undLeistungsspektrumGALLERY01.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>  
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-undLeistungsspektrumGALLERY01.webp" alt="Gallery Image 4" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                                <!-- SLIDE 5 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-undLeistungsspektrumGALLERY03.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-undLeistungsspektrumGALLERY03.webp" alt="Gallery Image 5" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- SLIDE 6 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-undLeistungsspektrumGALLERY05.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-undLeistungsspektrumGALLERY05.webp" alt="Gallery Image 5" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- SLIDE 7 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-undLeistungsspektrumGALLERY07.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-undLeistungsspektrumGALLERY07.webp" alt="Gallery Image 5" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- SLIDE 8 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-undLeistungsspektrumGALLERY08.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-undLeistungsspektrumGALLERY08.webp" alt="Gallery Image 5" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                <!-- SLIDE 9 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-undLeistungsspektrumGALLERY09.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-undLeistungsspektrumGALLERY09.webp" alt="Gallery Image 5" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                                 <!-- SLIDE 10 -->
+                                                <div class="swiper-slide cert-card cursor-pointer" 
+                                                    data-title="DrySoTec" 
+                                                    data-img="./assets/images/Liefer-undLeistungsspektrumGALLERY10.webp">
+                                                  <div @click="openCert($el)" class="gallery-image-block rounded-3xl overflow-hidden group relative">
+                                                    <div class="w-40 h-40 bg-white rounded-lg text-blue flex justify-center items-center absolute bottom-20 right-20 scale-0 opacity-0 transition-all duration-300 ease-in-out group-hover:scale-100 group-hover:opacity-100 z-10 shadow-md">
+                                                      <i data-lucide="plus"></i>
+                                                    </div>
+                                                    <div class="w-full h-320">
+                                                      <img src="./assets/images/Liefer-undLeistungsspektrumGALLERY10.webp" alt="Gallery Image 5" class="w-full h-full object-cover">
+                                                    </div>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+
+                                          <!-- Controls -->
+                                          <div class="swiper-pagination"></div>
+                                      
+                                        </div>
+                                      <div class="swiper-button-next z-30! size-24! "></div>
+                                   </div>
+                                  
+
+
+                                  <!-- 3. LIGHTBOX GALLERY MODAL (MATCHING ATTACHED DESIGN) -->
+                                  <div x-show="open" 
+                                      x-cloak 
+                                      x-transition.opacity.duration.300ms
+                                      @click.self="closeModal()" 
+                                      class="fixed inset-0 z-9999 flex items-center justify-center p-4 md:p-8 bg-dark_blue/80 backdrop-blur-xs select-none">
+
+                                    <!-- Previous Navigation Button -->
+                                    <button type="button" 
+                                            @click.stop="prev()" 
+                                            class="absolute left-20 md:left-32 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition p-2 cursor-pointer z-10" 
+                                            aria-label="Vorheriges Bild">
+                                        <i data-lucide="chevron-left" class="size-40 lg:size-60"></i>
+                                    </button>
+
+                                    <!-- Modal Content Card Container -->
+                                    <div class="relative flex flex-col items-center max-w-2xl w-full max-h-[90vh]">
+                                      
+                                      <!-- Main Lightbox Image -->
+                                      <div class="w-full overflow-hidden flex justify-center flex-col items-center max-w-md mx-auto">
+                                        <img :src="currentImg" 
+                                            :alt="currentTitle" 
+                                            class="max-w-320 md:max-w-sm lg:max-w-md max-h-[72vh] w-full object-cover rounded-2xl md:rounded-3xl shadow-lg">
+
+                                            <div class="max-w-320 md:max-w-sm lg:max-w-md w-full mt-16 bg-white rounded-xl md:rounded-2xl p-16 flex items-center justify-between shadow-xl">
+                                              <div class="flex flex-col text-left">
+                                                <span class="font-bold text-16 leading-snug" x-text="currentTitle">DrySoTec</span>
+                                                <span class="text-16 font-normal" x-text="imageCounter">Bild 1 von 5</span>
+                                              </div>
+
+                                              <!-- Close Button -->
+                                              <button type="button" 
+                                                      @click="closeModal()" 
+                                                      class="text-blue-600 hover:text-blue-800 transition p-1 cursor-pointer font-bold" 
+                                                      aria-label="Schließen">
+                                                <i data-lucide="x"></i>  
+                                              </button>
+                                            </div>
+                                      </div>
+
+                                      <!-- Bottom Information Bar -->
+                                      
+
+                                    </div>
+
+                                    <!-- Next Navigation Button -->
+                                    <button type="button" 
+                                            @click.stop="next()" 
+                                            class="absolute right-20 md:right-32 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition p-2 cursor-pointer z-10" 
+                                            aria-label="Nächstes Bild">
+                                        <i data-lucide="chevron-right" class="size-40 lg:size-60"></i>   
+                                    </button>
+
+                                  </div>
+
+                                </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+       </div>
+    </main>
+    
+   <!-- Production version -->
+  <script src="assets/js/lucide.js"></script>
+
+  <script src="assets/js/swiper-bundle.min.js"></script>
+
+  <script src="assets/js/script.js"></script>
+</body>
+</html>

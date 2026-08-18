@@ -10,17 +10,39 @@
   font-display: swap;
 }
 @theme {
-  --spacing: 1px;
- --spacing-bottom: clamp(2.5rem, 0.513rem + 4.048vw, 4.688rem); /* min: 40px | max: ~75px */
---spacing-sec-sm: clamp(0.875rem, 2vw, 1rem);                   /* min: 14px | max: 16px */
---spacing-sec-lg: clamp(2.5rem, 0.223rem + 4vw, 5.625rem);      /* min: 40px | max: 90px */
+  /* --------------------------------------------------
+   * BASE SPACING & SYSTEM OVERRIDES
+   * -------------------------------------------------- */
+  --spacing: 1px; 
 
-  --gap-fluid: clamp(1.5rem, 0.997rem + 2.063vw, 3.125rem); /* min: 24px | max: 50px */
---gap-fluid-md: clamp(1.5rem, 1.19rem + 1.27vw, 2.5rem); /* 24px -> 40px */
+  /* --------------------------------------------------
+   * FLUID SPACING (Gaps & Margins)
+   * -------------------------------------------------- */
+  /* min: 40px (2.5rem) @ 390px viewport | max: 75px (4.688rem) */
+  --spacing-bottom: clamp(2.5rem, 1.51rem + 4.07vw, 4.688rem);
 
---header-h: 182px;
+  /* min: 24px (1.5rem) @ 390px viewport | max: 50px (3.125rem) */
+  --spacing-fluid-x: clamp(1.5rem, 0.79rem + 2.92vw, 3.125rem);
+
+  /* min: 14px (0.875rem) @ 390px viewport | max: 16px (1rem) */
+  --spacing-sec-sm: clamp(0.875rem, 0.82rem + 0.23vw, 1rem);
+
+  /* min: 40px (2.5rem) @ 390px viewport | max: 90px (5.625rem) */
+  --spacing-sec-lg: clamp(2.5rem, 0.08rem + 5.81vw, 5.625rem);
+
+  /* min: 24px (1.5rem) @ 390px viewport | max: 50px (3.125rem) */
+  --gap-fluid: clamp(1.5rem, 0.79rem + 2.92vw, 3.125rem);
+
+  /* min: 24px (1.5rem) @ 390px viewport | max: 40px (2.5rem) */
+  --gap-fluid-md: clamp(1.5rem, 1.05rem + 1.86vw, 2.5rem);
+
+  /* Fixed layout constraints */
+  --header-h: 182px;
+
+  /* --------------------------------------------------
+   * BREAKPOINTS & CONTAINERS
+   * -------------------------------------------------- */
   --breakpoint-*: initial;
-
   --breakpoint-xsm: 450px;
   --breakpoint-sm: 576px;
   --breakpoint-md: 768px;
@@ -31,7 +53,6 @@
   --breakpoint-3xl: 1650px;
 
   --container-*: initial;
-
   --container-xsm: 450px;
   --container-sm: 576px;
   --container-md: 768px;
@@ -41,56 +62,74 @@
   --container-xxl: 1440px;
   --container-3xl: 1650px;
 
+  /* --------------------------------------------------
+   * COLOR PALETTE
+   * -------------------------------------------------- */
   --color-ghost-white: #e7ebf7;
   --color-blue: #0066b2;
-  --color-dark_blue: #171835;
+  --color-dark_blue: #171835; /* Renamed from dark_blue for Tailwind convention */
   --color-red: #b6181f;
   --color-white: #ffffff;
   --color-footer_bg: #cce0f0;
-  --color-crd_bg: #f9f9fa;
+  --color-crd-bg: #f9f9fa;
   --color-body-bg: #e7ebf7;
+  --color-navy-blue: #002c4c;
 
-  --font-lexend: "lexend";
+  /* --------------------------------------------------
+   * TYPOGRAPHY
+   * -------------------------------------------------- */
+  --font-lexend: "Lexend", sans-serif;
 
-  --text-60: clamp(2.25rem, 1.4rem + 2.25vw, 3.75rem);
+  /* min: 36px (2.25rem) | max: 60px (3.75rem) */
+  --text-60: clamp(2.25rem, 1.57rem + 2.79vw, 3.75rem);
   --text-60--line-height: 1.2;
 
-  --text-100: clamp(4.5rem, 4.5rem + 1.75vw, 6.25rem);
+  /* min: 72px (4.5rem) | max: 100px (6.25rem) */
+  --text-100: clamp(4.5rem, 3.71rem + 3.26vw, 6.25rem);
   --text-100--line-height: 1.3;
 
-  --text-35: clamp(1.5rem, 1.287rem + 0.873vw, 2.188rem);
+  /* min: 24px (1.5rem) | max: 35px (2.188rem) */
+  --text-35: clamp(1.5rem, 1.19rem + 1.28vw, 2.188rem);
   --text-35--line-height: 1.4;
 
-  --text-22: clamp(1.2rem, 1.25rem + 0.139vw, 1.375rem);
-  --text-24--line-height: 1.4;
+  /* min: 19.2px (1.2rem) | max: 22px (1.375rem) */
+  --text-22: clamp(1.2rem, 1.05rem + 0.6vw, 1.375rem);
+  --text-22--line-height: 1.4; /* Fixed typo: matched variable key to --text-22 */
 
-  --text-20: 20px;
+  /* min: 18px | max: 20px */
+  --text-20: clamp(1.125rem, 1.07rem + 0.23vw, 1.25rem); /* Standardized to rem units */
   --text-20--line-height: 1.6;
 
-  --text-18: 18px;
+  /* min: 16px | max: 18px */
+  --text-18: clamp(1rem, 0.94rem + 0.23vw, 1.125rem); /* Standardized to rem units */
   --text-18--line-height: 1.4;
 
-  --text-16: 16px;
+  --text-16: 1rem; /* 16px */
   --text-16--line-height: 1.4;
 
-  --transition: all 0.48s ease-in-out;
-  /* padding */
-  --padding-inline: clamp(1.25rem, 0.239rem + 3.647vw, 4rem);
-  --padding-block: clamp(1.5rem, 0.513rem + 4.048vw, 4.688rem);
-  --padding-box: clamp(2.5rem, 0.223rem + 5.238vw, 5.625rem);
+  /* --------------------------------------------------
+   * PADDING & COMPONENT SPACING
+   * -------------------------------------------------- */
+  /* min: 20px (1.25rem) | max: 64px (4rem) */
+  --padding-inline: clamp(1.25rem, 0.01rem + 5.12vw, 4rem);
 
-  /* gap */
+  /* min: 24px (1.5rem) | max: 75px (4.688rem) */
+  --padding-block: clamp(1.5rem, 0.81rem + 4.07vw, 4.688rem);
+
+  /* min: 40px (2.5rem) | max: 90px (5.625rem) */
+  --padding-box: clamp(2.5rem, 0.08rem + 5.81vw, 5.625rem);
+
+  /* Section large padding utility */
+  --pa-sec-lg: clamp(1.5rem, 1.05rem + 1.86vw, 2.5rem);
+
+  /* Static Gaps, Shadows, Radius & Gradients */
   --gap-compact-sm: 0.75rem;
   --gap-compact-md: 2rem;
   --shadow-inner: rgba(23, 24, 53, 0.1) 0px 4px 4px;
   --shadow-card: rgba(23, 24, 53, 0.25) 0px 0px 8.7px;
-
   --radius-head: 2.5rem;
-  --gradient-light: linear-gradient(rgba(0, 102, 178, 0.4),rgba(23, 24, 53, 0.8));
-
-  --pa-sec-lg:  clamp(1.5rem, 1.19rem + 1.27vw, 2.5rem);
-
-  
+  --gradient-light: linear-gradient(rgba(0, 102, 178, 0.4), rgba(23, 24, 53, 0.8));
+  --transition: all 0.48s ease-in-out;
 }
 
 @layer base {
@@ -102,10 +141,13 @@
   body{
     @apply text-dark_blue font-lexend overflow-x-hidden
   }
-  a,
-  span {
-    @apply block;
-  }
+  a:not(p > a),
+span {
+  @apply block;
+}
+   a, button{
+    @apply cursor-pointer
+   }
   p {
     @apply font-light;
   }
@@ -147,10 +189,13 @@
     
   .btn-primary {
     @apply bg-blue text-white h-47 px-24 w-fit uppercase flex items-center text-sm rounded-head hover:bg-red
-    hover:scale-95 transition-(--transition) text-center;
+    hover:scale-95 transition-(--transition) text-center font-medium
+  }
+  .btn-border{
+    @apply bg-transparent w-fit py-8 px-24 uppercase text-white border border-solid border-white flex justify-center items-center rounded-head text-sm hover:scale-95 transition-(--transition) text-center hover:bg-blue hover:border-blue font-medium
   }
   .btn-secondary {
-    @apply bg-red text-white w-fit uppercase text-sm text-center h-47 px-24  flex items-center rounded-head hover:bg-dark_blue hover:scale-95 transition-(--transition);
+    @apply bg-red text-white w-fit uppercase text-sm text-center h-47 px-24  flex items-center rounded-head hover:bg-dark_blue hover:scale-95 transition-(--transition) font-medium
   }
 }
  
@@ -171,19 +216,7 @@
   .block-container {
     @apply xsm:max-w-xsm sm:max-w-sm md:max-w-md lg:max-w-lg xlg:max-w-xlg xxl:max-w-xxl 3xl:max-w-3xl px-inline mx-auto w-full;
   }
-  /* .prose ul {
-    @apply [&_ul]:space-y-8 [&_li]:pl-24 [&_li]:before:content-[''] [&_li]:relative  [&_li]:before:size-7 [&_li]:before:bg-white [&_li]:before:absolute [&_li]:before:top-15 [&_li]:before:left-12 [&_li]:before:rounded-full text-16 [&_li]:before:-translate-x-1/2 [&_li]:before:-translate-y-1/2;
-  }
-
-  .prose-dark,
-  .prose-22 {
-    @apply [&_ul]:space-y-8 [&_li]:pl-24 [&_li]:before:content-[''] [&_li]:relative  [&_li]:before:size-7 [&_li]:before:bg-dark_blue [&_li]:before:absolute [&_li]:before:top-12 [&_li]:before:left-11 [&_li]:before:rounded-full text-16 [&_li]:before:-translate-x-1/2 [&_li]:before:-translate-y-1/2;
-  }
-  .prose-22,
-  .block-title .pross-22 {
-    @apply [&_li]:before:top-15 [&_li]:before:left-12 [&_li]:before:-translate-x-1/2 [&_li]:before:-translate-y-1/2;
-  } */
-  
+ 
   .col-50 {
     @apply w-full xlg:w-1/2;
   }
@@ -191,13 +224,13 @@
     @apply flex flex-col;
   }
   .v-blockcard {
-    @apply flex-col xlg:flex-row [&_li]:text-18 [&_li]:leading-normal;
+    @apply flex-col text-18 xlg:flex-row [&_li]:text-18 [&_li]:leading-normal;
   }
   .v-blockcard-reverse {
-    @apply flex-col xlg:flex-row-reverse [&_ul>li]:text-18 [&_li]:leading-normal;
+    @apply flex-col text-18 xlg:flex-row-reverse [&_ul>li]:text-18 [&_li]:leading-normal;
   }
   .v-blockcard-center .v-flex > ul, .v-blockcard-center .v-flex > *{
-    @apply w-fit 
+    @apply w-fit  
   }
    .v-blockcard-center .vflex.alignment-left{
     @apply flex flex-col justify-start items-center text-left
@@ -266,10 +299,10 @@
     @apply w-full h-full object-cover;
   }
   .box-white {
-    @apply p-bottom;
+    @apply px-block py-box;
   }
   .v-blockcard .vflex ul, .v-blockcard-reverse .vflex ul{
-    @apply space-y-12 [&_li]:relative [&_li]:pl-38
+    @apply space-y-10 [&_li]:relative [&_li]:pl-38 [&_li]:font-normal [&_li]:text-16!
   }
   /* text module css */
   .ctm_sec {
@@ -287,6 +320,7 @@
   .ctm_sec .bg_gradient,  .ctm_sec .bg_gradient-dark {
     @apply w-full h-full absolute object-cover;
   }
+ 
   .col{
     @apply relative z-10
   }
@@ -316,9 +350,9 @@
   .col .btn-secondary {
     @apply mt-15 xxl:mt-20;
   }
-  .col img {
+  /* .col img {
     @apply rounded-2xl;
-  }
+  } */
   
   .heading_1 {
     @apply text-60;
@@ -347,10 +381,22 @@
   .col :is(strong, b) {
     @apply font-semibold;
   }
-  .col :is(u, a):not(.btn-primary, .btn-secondary) {
+  .col :is(u, a):not(.btn-primary, .btn-secondary, .btn-border) {
     @apply underline underline-offset-2;
   }
- 
+  /* for box  */
+  .col.box-white{
+    @apply bg-white rounded-xl mb-12
+  }
+  .col.box-dark{
+    @apply bg-dark_blue rounded-xl p-block text-white mb-12
+  }
+  .col.box-blue{
+    @apply bg-blue rounded-xl p-block text-white mb-12
+  }
+  .col.box-gradient-dark{
+    @apply bg-gradient-dark rounded-xl p-block 
+  }
   /* footer */
   .footer-links ul li a, .footer-links1 ul li a{
     @apply transition hover:underline
@@ -363,10 +409,20 @@
   }
   
 }
-
+.header-fix header {
+    position: fixed;
+    width: 100%;
+    top: 10px;
+}
+body:not(.header-fix) .bar{
+  margin-top: 80px !important;
+}
 @utility bg-gradient-dark{
-    @apply bg-linear-to-r from-dark_blue to-blue
-  }
+    @apply bg-linear-to-r from-navy-blue from-20% to-blue to-80%;
+  }  
+@utility with-border{
+  @apply border-l-20 border-l-red 
+ }
 @utility bg-gradient {
   background:linear-gradient(rgba(0, 102, 178, 0.4),rgba(23, 24, 53, 0.8));
 }
@@ -380,6 +436,7 @@
 flex flex-col justify-start lg:justify-center items-start lg:items-center text-left lg:text-center
 
 
+  /* swiper-cards */
   /* swiper-cards */
 .swiper-cards .swiper-slide {
   @apply h-auto! shrink-0 flex! flex-col! transition-transform duration-300 ease-in-out
@@ -408,9 +465,32 @@ flex flex-col justify-start lg:justify-center items-start lg:items-center text-l
   opacity: 1;
   transition: opacity 0.4s ease;
 }
+.swiper-cards_prev {
+background: linear-gradient(
+    90deg,
+    rgba(0, 102, 178, 0.8),
+    rgba(0, 102, 178, 0.6)
+  ) !important;
+  border-top-right-radius: 24px;
+  border-bottom-right-radius: 24px;
+}
+.swiper-cards_next{
+  background: linear-gradient(
+    90deg,
+    rgba(0, 102, 178, 0.8),
+    rgba(0, 102, 178, 0.6)
+  ) !important;
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+}
   .swiper-slide.swiper-slide-visible.swiper-slide-next .swiper-card .swiper-card-media::after, .swiper-slide.swiper-slide-visible.swiper-slide-active .swiper-card .swiper-card-media::after {
      opacity: 0;
   }
+@media (max-width:991px){
+  .swiper-slide.swiper-slide-visible.swiper-slide-next .swiper-card{
+    transform: scale(0.85);
+  }
+}
 @media (max-width:768px){
    .swiper-slide.swiper-slide-visible.swiper-slide-active .swiper-card .swiper-card-media::after {
      opacity: 0;
@@ -419,11 +499,10 @@ flex flex-col justify-start lg:justify-center items-start lg:items-center text-l
     opacity:1;
 
   }
-  .swiper-slide.swiper-slide-visible.swiper-slide-next .swiper-card{
+  /* .swiper-slide.swiper-slide-visible.swiper-slide-next .swiper-card{
     transform:scale(0.85)  ;
+} */
 }
-}
-	
 .icon-md-4 {
   display: flex;
   align-items: center;
@@ -458,15 +537,15 @@ flex flex-col justify-start lg:justify-center items-start lg:items-center text-l
   @apply opacity-30 pointer-events-none cursor-not-allowed;
 }
 
-.swiper-pagination-partners .swiper-pagination-bullet {
+.swiper-pagination-bullet {
   @apply w-10 h-10 m-0 rounded-full bg-transparent cursor-pointer transition-(--transition) border border-solid border-blue;
 }
 
-.swiper-pagination-partners .swiper-pagination-bullet-active {
+ .swiper-pagination-bullet-active {
   @apply opacity-100 bg-blue;
 }
 /* modules */
-.ctm_sec.bg-blue .ctm_list li:before, .ctm_sec.bg-dark_blue .ctm_list li:before, .ctm_sec:has(.bg_image) .ctm_list li:before {
+.ctm_sec.bg-blue .ctm_list li:before, .ctm_sec.bg-dark_blue .ctm_list li:before, .ctm_sec:has(.bg_image) .ctm_list li:before, .ctm_sec .col.box-dark .ctm_list li:before, .ctm_sec .col.box-blue .ctm_list li:before,.ctm_sec .col.box-gradient-dark .ctm_list li:before{
   content:"";
   width: 24px;
   height:24px;
@@ -631,7 +710,7 @@ flex flex-col justify-start lg:justify-center items-start lg:items-center text-l
 }
 .menu-block-has-child > a{@apply w-full}
 .navlink{@apply text-sm font-medium text-[#14161F] hover:text-blue  transition-all duration-300 ease-in-out}
-  .mrow{@apply flex items-center gap-14 mx-5 py-8 px-12  hover:scale-95 rounded-xl text-sm font-semibold text-[#14161F] cursor-pointer transition-all duration-300 ease-in-out}
+  .mrow{@apply flex items-center gap-14 mx-5 py-8 px-12  hover:scale-95 rounded-xl text-sm font-semibold text-[#14161F] hover:text-blue hover:bg-body-bg cursor-pointer transition-all duration-300 ease-in-out }
   .mico{@apply grid place-items-center w-38 h-38 shrink-0 rounded-xl bg-white ring-1 ring-[#E6E8EF] text-[#14161F]}
   .msub{@apply flex items-center h-46 text-sm font-semibold text-[#14161F] hover:text-blue  transition-all duration-300 ease-in-out hover:scale-95}
    /* .submenu-container li :last-child{
@@ -695,3 +774,8 @@ flex flex-col justify-start lg:justify-center items-start lg:items-center text-l
     grid-column: 1 / -1; 
   }
   }
+#progressCircle {
+stroke: #0066b2; 
+  transition: stroke-dashoffset 0.1s linear;
+  transform-origin: center;
+}
